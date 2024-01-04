@@ -5,7 +5,7 @@ push!(LOAD_PATH, dirname(dirname(Base.@__DIR__)) * "/GeneralHamiltonians/src")
 push!(LOAD_PATH, dirname(Base.@__DIR__) * "/src")
 
 using Test, Random
-using SphericalTensors, DMRG, InfiniteDMRG, GeneralHamiltonians
+using DMRG, InfiniteDMRG, GeneralHamiltonians
 using LongRangeHamiltonians
 
 Random.seed!(1342)

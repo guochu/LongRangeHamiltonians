@@ -1,0 +1,12 @@
+name = "LongRangeHamiltonians"
+uuid = "bbbb85be-3698-4372-9691-252f1a9a8fc0"
+authors = ["Guo Chu <guochu604b@gmail.com>"]
+version = "0.0.1"
+
+
+[deps]
+DMRG = "1240110f-4488-488b-9691-4f58b4220f75"
+InfiniteDMRG = "c4d23ee2-b445-4f35-9968-b1d50be634b8"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+LsqFit = "2fda8390-95c7-5789-9bda-21331edee243"
+SphericalTensors = "810931ec-fc2f-499d-8094-ffc35d8d9f19"
