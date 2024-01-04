@@ -13,7 +13,7 @@ struct GenericDecayTerm{M1, M<:MPSBondTensor, M2, F, T <: Number} <: AbstractLon
     coeff::T
 end
 
-GenericDecayTerm(a::SiteOperator, b::SiteOperator, f; middle::MPSBondTensor = id(physical_space(a)), coeff::Number=1.) = GenericDecayTerm(a, middle, b, f, T)
+GenericDecayTerm(a::SiteOperator, b::SiteOperator, f; middle::MPSBondTensor = id(physical_space(a)), coeff::Number=1.) = GenericDecayTerm(a, middle, b, f, coeff)
 
 function GenericDecayTerm(a::SiteOperator, b::SiteOperator; 
                             middle::MPSBondTensor = id(physical_space(a)), f, coeff::Number=1.) 
