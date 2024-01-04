@@ -21,6 +21,7 @@ function GenericDecayTerm(a::SiteOperator, b::SiteOperator;
     GenericDecayTerm(a, middle, b, f, coeff)
 end 
 TK.scalartype(::Type{GenericDecayTerm{M1, M, M2, F, T}}) where {M1, M, M2, F<:AbstractVector, T} = promote_type(scalartype(M1), scalartype(M), scalartype(M2), eltype(F), T)
+TK.scalartype(x::GenericDecayTerm{M1, M, M2, F, T}) where {M1, M, M2, F<:AbstractVector, T} = scalartype(typeof(x))
 TK.scalartype(x::GenericDecayTerm{M1, M, M2, F, T}) where {M1, M, M2, F, T} = promote_type(scalartype(M1), scalartype(M), scalartype(M2), T, typeof(x.f(0.)))
 Base.adjoint(x::GenericDecayTerm) = GenericDecayTerm(_op_adjoint(x.a, x.m, x.b)..., _conj(x.f), conj(coeff(x)))
 TK.spacetype(::Type{GenericDecayTerm{M1, M, M2, F, T}}) where {M1, M, M2, F, T} = spacetype(M1)
