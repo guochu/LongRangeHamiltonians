@@ -64,6 +64,7 @@ function exponential_expansion(f::Vector{<:Number}, alg::HankelExpansion)
         err = expansion_error(f, xs, lambdas)
         if err <= atol
             (verbosity > 1) && println("converged in $n iterations, error is $err.")
+            # println(xs, " ", lambdas)
             return xs, lambdas
         else
             if (n > 1) && (err >= errs[end])
@@ -76,6 +77,7 @@ function exponential_expansion(f::Vector{<:Number}, alg::HankelExpansion)
         end
         if n >= L-n+1
             (verbosity > 0) && @warn "can not converge to $atol with size $L, try increase L, or decrease tol"
+            # println(xs, " ", lambdas)
             return xs, lambdas
         end
     end
@@ -154,6 +156,12 @@ function exponential_expansion(f::Vector{<:Number}, alg::LsqExpansion)
     error("can not find a good approximation")
 end
 
+"""
+    exponential_expansion(f::Vector{<:Number}; alg::ExponentialExpansionAlgorithm=HankelExpansion())
+
+Return a list of αᵢ and βᵢ which satisfy:
+f(x) = ∑ᵢ αᵢ × (βᵢ)ˣ, for 1 ≤ x ≤ N
+"""
 exponential_expansion(f::Vector{<:Number}; alg::ExponentialExpansionAlgorithm=HankelExpansion()) = exponential_expansion(f, alg)
 exponential_expansion(f, L::Int, alg::ExponentialExpansionAlgorithm) = exponential_expansion([f(k) for k in 1:L], alg)
 exponential_expansion(f, L::Int; alg::ExponentialExpansionAlgorithm=HankelExpansion()) = exponential_expansion(f, L, alg)
