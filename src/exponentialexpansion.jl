@@ -63,7 +63,7 @@ function exponential_expansion(f::Vector{<:Number}, alg::HankelExpansion)
         xs, lambdas, err0 = hankel_exponential_expansion_n(f, n)
         err = expansion_error(f, xs, lambdas)
         if err <= atol
-            (verbosity > 1) && println("converged in $n iterations, error is $err.")
+            (verbosity > 1) && println("converged in $n iterations, error is $err")
             # println(xs, " ", lambdas)
             return xs, lambdas
         else
@@ -142,7 +142,7 @@ function exponential_expansion(f::Vector{<:Number}, alg::LsqExpansion)
             xs, lambdas, err = lsq_expansion_n(f, n, vcat(_xs, 0.5), vcat(_lambdas, 0.5))
         end
         if err <= atol
-            (verbosity > 1) && println("converged in $n iterations, error is $err.")
+            (verbosity > 1) && println("converged in $n iterations, error is $err")
             return xs, lambdas
         else
             push!(results, (xs, lambdas))

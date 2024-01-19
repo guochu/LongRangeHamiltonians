@@ -53,7 +53,7 @@ function exponential_expansion(x::GenericDecayTerm{M1, M, M2, F, T}; len::Union{
         isa(len, Int) || throw(ArgumentError("key len should be Int when F is not a vector"))
         xs, lambdas = exponential_expansion(x.f, len-1, alg=alg)
     end
-    r = ExponentialDecayTerm{M1, M, M2, scalartype(x)}[]
+    r = ExponentialDecayTerm{M1, M, M2, eltype(lambdas)}[]
     for (c, alpha) in zip(xs, lambdas)
         push!(r, ExponentialDecayTerm(x.a, x.b; middle=x.m, α=alpha, coeff=c * coeff(x)))
     end
